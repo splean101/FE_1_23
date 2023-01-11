@@ -8,8 +8,8 @@ function sum1(arr) {
   if (i > 0) {
     i--;
     sum += arr[i];
-    console.log('i', i);
-    console.log('sum ', sum); //55
+    //console.log('i', i);
+    //console.log('sum ', sum); //55
     sum1(arr);
   } else {
     console.log('else sum ', sum); //55
