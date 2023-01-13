@@ -14,21 +14,35 @@
 // console.log(sum2(arr));
 
 //2.
-function deepCount(array) {
+function deepCount1(array) {
   let sum = array.length;
   for (const el of array) {
-    if(Array.isArray(el)){
-      sum += deepCount(el)
-    }    
+    if (Array.isArray(el)) {
+      sum += deepCount1(el);
+    }
   }
   return sum;
 }
 
-console.log(deepCount([])); //0
-console.log(deepCount([1, 2, 3])); //3
-console.log(deepCount(['x', 'y', ['z']])); //4
-console.log(deepCount([1, 2, [3, 4, [5]]])); //7
-console.log(deepCount([[[[]]]])); //3
+function deepCount2(array) {
+  let sum = array.length;
+  for (const el of array) {
+    Array.isArray(el) ? (sum += deepCount1(el)) : null;
+  }
+  return sum;
+}
+
+console.log(deepCount1([])); //0
+console.log(deepCount1([1, 2, 3])); //3
+console.log(deepCount1(['x', 'y', ['z']])); //4
+console.log(deepCount1([1, 2, [3, 4, [5]]])); //7
+console.log(deepCount1([[[[]]]])); //3
+
+console.log(deepCount2([])); //0
+console.log(deepCount2([1, 2, 3])); //3
+console.log(deepCount2(['x', 'y', ['z']])); //4
+console.log(deepCount2([1, 2, [3, 4, [5]]])); //7
+console.log(deepCount2([[[[]]]])); //3
 //3.
 
 //4.
